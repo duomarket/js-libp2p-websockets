@@ -38,7 +38,7 @@
   "dependencies": {
     "interface-connection": "^0.3.0",
     "lodash.includes": "^4.3.0",
-    "mafmt": "^2.1.2",
+    "mafmt": "^2.1.6",
     "pull-ws": "^3.2.8"
   },
   "devDependencies": {
