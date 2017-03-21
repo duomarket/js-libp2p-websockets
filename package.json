@@ -46,7 +46,7 @@
     "chai": "^3.5.0",
     "dirty-chai": "^1.2.2",
     "gulp": "^3.9.1",
-    "interface-transport": "~0.3.5",
+    "interface-transport": "0.3.4",
     "multiaddr": "^2.2.2",
     "pre-commit": "^1.2.2",
     "pull-goodbye": "0.0.1",
