@@ -21,6 +21,7 @@ class WebSockets {
     callback = callback || function () {}
     const forceproxy = navigator.userAgent.toLowerCase().indexOf('firefox') > -1
     const url = maToUrl(ma, forceproxy)
+    var socket;
     log('dialing %s', url)
     try {
       socket = connect(url, {
@@ -28,7 +29,7 @@ class WebSockets {
         onConnect: (err) => callback(err)
       })
     } catch(err) {
-      if forceproxy {
+      if (forceproxy) {
         throw(err)
       }
       url = maToUrl(ma, true) // use proxy
