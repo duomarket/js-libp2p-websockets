@@ -20,7 +20,7 @@ class WebSockets {
 
     callback = callback || function () {}
     const forceproxy = navigator.userAgent.toLowerCase().indexOf('firefox') > -1
-    const url = maToUrl(ma, forceproxy)
+    var url = maToUrl(ma, forceproxy)
     var socket;
     log('dialing %s', url)
     try {
