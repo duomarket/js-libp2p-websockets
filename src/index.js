@@ -19,31 +19,19 @@ class WebSockets {
     }
 
     callback = callback || function () {}
-    const forceproxy = navigator.userAgent.toLowerCase().indexOf('firefox') > -1
-    var url = maToUrl(ma, forceproxy)
-    var socket;
-    log('dialing %s', url)
-    try {
-      socket = connect(url, {
-        binary: true,
-        onConnect: (err) => callback(err)
-      })
-    } catch(err) {
-      if (forceproxy) {
-        throw(err)
-      }
-      url = maToUrl(ma, true) // use proxy
-      socket = connect(url, {
-        binary: true,
-        onConnect: (err) => callback(err)
-      })
-    } finally {
-      const conn = new Connection(socket)
-      conn.getObservedAddrs = (callback) => callback(null, [ma])
-      conn.close = (callback) => socket.close(callback)
 
-      return conn
-    }
+    const url = maToUrl(ma, true) // force proxy use
+    log('dialing %s', url)
+    const socket = connect(url, {
+      binary: true,
+      onConnect: (err) => callback(err)
+    })
+
+    const conn = new Connection(socket)
+    conn.getObservedAddrs = (callback) => callback(null, [ma])
+    conn.close = (callback) => socket.close(callback)
+
+    return conn
   }
 
   createListener (options, handler) {
